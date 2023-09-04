@@ -15,6 +15,7 @@
     "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
+    "@radix-ui/colors": "^2.1.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -27,6 +28,7 @@
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "windy-radix-palette": "^0.6.1"
   }
 }
