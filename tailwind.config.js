@@ -7,7 +7,12 @@ export default {
       tablet: "768px",
       desktop: "1220px",
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: "var(--font-poppins)",
+        roboto: "var(--font-roboto)",
+      },
+    },
   },
   plugins: [require("windy-radix-palette")],
 };
