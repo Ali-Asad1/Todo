@@ -7,14 +7,15 @@ export default {
       tablet: "768px",
       desktop: "1220px",
     },
-    container: {
-      center: true,
-      padding: "1.25rem",
-    },
+
     extend: {
       fontFamily: {
         poppins: "var(--font-poppins)",
         roboto: "var(--font-roboto)",
+      },
+      container: {
+        center: true,
+        padding: "1.25rem",
       },
     },
   },
