@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { TodoType } from "../../types/todo.type";
-import supabase from "../../config/supabase/supabaseClient";
+import { TodoType } from "@/types/todo.type";
+import supabase from "@/config/supabase/supabaseClient";
 
 interface InitialStateType {
   loading: boolean;
