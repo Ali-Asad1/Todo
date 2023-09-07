@@ -3,6 +3,7 @@ import Header from "./components/layout/Header";
 import Home from "./pages/Home/Home";
 import Create from "./pages/Create/Create";
 import Update from "./pages/Update/Update";
+import Footer from "./components/layout/Footer";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Update />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
