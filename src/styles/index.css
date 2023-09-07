@@ -9,6 +9,9 @@
     @apply h-full;
   }
   body {
-    @apply bg-slate-2 font-roboto;
+    @apply bg-slate-3 font-roboto;
+  }
+  section {
+    @apply py-12
   }
 }
