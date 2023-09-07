@@ -20,7 +20,8 @@
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
     "redux": "^4.2.1",
-    "tailwind-merge": "^1.14.0"
+    "tailwind-merge": "^1.14.0",
+    "typewriter-effect": "^2.20.1"
   },
   "devDependencies": {
     "@radix-ui/colors": "^2.1.0",
