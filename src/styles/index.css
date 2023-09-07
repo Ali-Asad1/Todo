@@ -9,9 +9,17 @@
     @apply h-full;
   }
   body {
-    @apply bg-slate-3 font-roboto;
+    @apply bg-slate-2 font-roboto;
   }
   section {
-    @apply py-12
+    @apply py-12;
   }
+}
+
+#app {
+  @apply h-full flex flex-col;
+}
+
+footer {
+  @apply mt-auto;
 }
