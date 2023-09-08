@@ -23,7 +23,7 @@ const slice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(getAllTodos.pending, (state, actions) => {
+    builder.addCase(getAllTodos.pending, (state) => {
       state.loading = true;
     }),
       builder.addCase(getAllTodos.fulfilled, (state, actions: any) => {

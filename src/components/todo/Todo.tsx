@@ -8,7 +8,7 @@ interface TodoPropType extends TodoType {
   delay: number;
 }
 
-const Todo = ({ id, created_at, title, description, delay: itemDelay }: TodoPropType) => {
+const Todo = ({ id, title, description, delay: itemDelay }: TodoPropType) => {
   const todoVariants: Variants = {
     show: {
       opacity: 1,
@@ -18,17 +18,6 @@ const Todo = ({ id, created_at, title, description, delay: itemDelay }: TodoProp
     },
     hidden: {
       opacity: 0,
-    },
-  };
-
-  const textVariants: Variants = {
-    show: {
-      opacity: 1,
-      y: 0,
-    },
-    hidden: {
-      opacity: 0,
-      y: 5,
     },
   };
 
