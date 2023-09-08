@@ -1,37 +1,42 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { TodoType } from "@/types/todo.type";
-import supabase from "@/config/supabase/supabaseClient";
+import { getAllTodos } from "@/api/services/todosService";
 
 interface InitialStateType {
   loading: boolean;
-  error: {} | null;
-  data: TodoType[] | null;
+  error?: {} | null;
+  data?: TodoType[] | null;
 }
 
 const initialState: InitialStateType = {
   loading: true,
   error: null,
-  data: null,
+  data: [],
 };
-
-export const getTodos = createAsyncThunk("todos/getTodos", async () => {
-  return await supabase.from("todos").select("*");
-});
 
 const slice = createSlice({
   name: "todos",
   initialState,
-  reducers: {},
+  reducers: {
+    removeTodo: (state, actions) => {
+      state.data = state.data?.filter((item) => item.id !== actions.payload);
+    },
+  },
   extraReducers(builder) {
-    builder.addCase(getTodos.fulfilled, (state, actions) => {
-      state.loading = false;
-      state.error = null;
-      state.data = actions.payload.data;
+    builder.addCase(getAllTodos.pending, (state, actions) => {
+      state.loading = true;
     }),
-      builder.addCase(getTodos.pending, (state, actions) => {
-        state.loading = true;
+      builder.addCase(getAllTodos.fulfilled, (state, actions: any) => {
+        state.loading = false;
+        state.error = null;
+        state.data = actions.payload.data;
+      }),
+      builder.addCase(getAllTodos.rejected, (state, actions: any) => {
+        state.loading = false;
+        state.error = actions.error.message;
       });
   },
 });
 
+export const { removeTodo } = slice.actions;
 export default slice.reducer;
