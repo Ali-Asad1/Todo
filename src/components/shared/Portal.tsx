@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const Portal: React.FC<React.PropsWithChildren> = ({ children }) => {
