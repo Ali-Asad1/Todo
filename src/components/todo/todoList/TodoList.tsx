@@ -1,6 +1,5 @@
 import { getAllTodos } from "@/api/services/todosService";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import TodoLoading from "../Loading";
 import { AnimatePresence } from "framer-motion";
 import Todo from "../Todo";
@@ -10,11 +9,21 @@ import Grid from "@/components/shared/Grid";
 import { TodoType } from "@/types/todo.type";
 
 const TodoList = () => {
-  const dispatch = useDispatch();
-  const { loading, error, data } = useSelector((state: any) => state.todos);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [data, setData] = useState<TodoType[]>([]);
   useEffect(() => {
-    dispatch(getAllTodos() as any);
+    try {
+      getAllTodos().then((res: any) => {
+        if (res.status === 200) {
+          setData(res.data);
+          setLoading(false);
+        } else {
+          setError(true);
+          setLoading(false);
+        }
+      });
+    } catch (err) {}
   }, []);
 
   return (
