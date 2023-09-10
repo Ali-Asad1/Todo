@@ -4,9 +4,10 @@ import { BiTrash } from "react-icons/bi";
 
 interface TodoPropType extends TodoType {
   delay: number;
+  onRemove: Function;
 }
 
-const Todo = ({ id, title, description, delay: itemDelay }: TodoPropType) => {
+const Todo = ({ id, title, description, delay: itemDelay, onRemove }: TodoPropType) => {
   return (
     <motion.div
       layout
@@ -25,9 +26,9 @@ const Todo = ({ id, title, description, delay: itemDelay }: TodoPropType) => {
         </div>
         <p className="text-sm line-clamp-2">{description}</p>
         <button
-          // onClick={() => {
-          //   dispatch(deleteTodo(id) as any);
-          // }}
+          onClick={() => {
+            onRemove(id);
+          }}
           className="w-10 h-10 flex justify-center items-center bg-teal-8 rounded-lg absolute top-0 -right-2 -translate-y-3 desktop:invisible desktop:opacity-0 desktop:translate-y-0 desktop:group-hover:visible desktop:group-hover:opacity-100 desktop:group-hover:-translate-y-3 active:scale-95 z-10 transition-all cursor-pointer select-none"
         >
           <BiTrash size={24} className="fill-slate-1 pointer-events-none select-none" />

@@ -1,4 +1,4 @@
-import { getAllTodos } from "@/api/services/todosService";
+import { deleteTodo, getAllTodos } from "@/api/services/todosService";
 import { useEffect, useState } from "react";
 import TodoLoading from "../Loading";
 import { AnimatePresence } from "framer-motion";
@@ -13,18 +13,24 @@ const TodoList = () => {
   const [error, setError] = useState(false);
   const [data, setData] = useState<TodoType[]>([]);
   useEffect(() => {
-    try {
-      getAllTodos().then((res: any) => {
-        if (res.status === 200) {
-          setData(res.data);
-          setLoading(false);
-        } else {
-          setError(true);
-          setLoading(false);
-        }
-      });
-    } catch (err) {}
+    fetchTodos();
   }, []);
+
+  const fetchTodos = async () => {
+    const response: any = await getAllTodos();
+    if (response.error) {
+      setError(true);
+    } else {
+      setData(response);
+    }
+    setLoading(false);
+  };
+
+  const removeTodo = async (id: number) => {
+    setData((prev) => prev.filter((todo) => todo.id !== id));
+    await deleteTodo(id);
+    fetchTodos();
+  };
 
   return (
     <section>
@@ -40,7 +46,7 @@ const TodoList = () => {
               data.length ? (
                 <AnimatePresence mode="popLayout">
                   {data.map((todo: TodoType, index: number) => (
-                    <Todo key={todo.id} {...todo} delay={index} />
+                    <Todo key={todo.id} {...todo} delay={index} onRemove={removeTodo} />
                   ))}
                 </AnimatePresence>
               ) : (
