@@ -1,6 +1,6 @@
 import { removeTodo } from "@/redux/todos/todos";
 import { TodoType } from "@/types/todo.type";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { BiTrash } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 
@@ -9,28 +9,16 @@ interface TodoPropType extends TodoType {
 }
 
 const Todo = ({ id, title, description, delay: itemDelay }: TodoPropType) => {
-  const todoVariants: Variants = {
-    show: {
-      opacity: 1,
-      transition: {
-        delay: itemDelay / 5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-    },
-  };
-
   const dispatch = useDispatch();
 
   return (
     <motion.div
       layout
-      variants={todoVariants}
-      initial="hidden"
-      animate="show"
-      exit="hidden"
-      transition={{ type: "spring" }}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1, transition: {ease:'easeInOut', delay: itemDelay / 10 } }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      transition={{ type: "spring", damping: 20, stiffness: 100 }}
+      key={id}
       className="w-full"
     >
       <div className="group w-full h-full px-5 py-4 bg-slate-1 rounded-lg shadow-lg active:bg-slate-4 transition-colors relative">
