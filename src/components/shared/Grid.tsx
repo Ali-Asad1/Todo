@@ -1,4 +1,5 @@
 import { classNames } from "@/libs/className";
+import Container from "./Container";
 
 export default function Grid({
   className,
@@ -8,7 +9,7 @@ export default function Grid({
   children: React.ReactNode;
 }) {
   return (
-    <div className="desktop:container px-5">
+    <Container>
       <div
         className={classNames(
           "grid grid-cols-4 tablet:grid-cols-4 desktop:grid-cols-12 gap-x-5",
@@ -17,6 +18,6 @@ export default function Grid({
       >
         {children}
       </div>
-    </div>
+    </Container>
   );
 }
