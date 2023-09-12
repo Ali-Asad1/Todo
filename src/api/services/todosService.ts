@@ -21,3 +21,13 @@ export const deleteTodo = async (id: number) => {
     }
   } catch (err) {}
 };
+
+export const addNewTodo = async (data: { title: string; description: string }) => {
+  try {
+    const response = await supabase.from("todos").insert([{ ...data }]);
+    if (response.status === 200) {
+      return { status: 200, message: "successfuly added" };
+    }
+    return { status: response.status, message: response.error?.message };
+  } catch (err) {}
+};
