@@ -9,7 +9,7 @@
     @apply h-full;
   }
   body {
-    @apply bg-slate-1 font-roboto;
+    @apply bg-slate-1 font-roboto text-slate-12;
   }
   section {
     @apply py-12;
@@ -22,4 +22,24 @@
 
 footer {
   @apply mt-auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-slate-2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-9;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-10;
 }
