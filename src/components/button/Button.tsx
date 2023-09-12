@@ -2,7 +2,7 @@ import { classNames } from "@/libs/className";
 import { cva, VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "inline-flex justify-center items-center px-5 rounded-xl text-base font-semibold transition-all select-none",
+  "inline-flex justify-center items-center px-5 rounded-xl text-base font-semibold disabled:opacity-50 disabled:pointer-events-none transition-all select-none",
   {
     variants: {
       btnStyle: {
@@ -101,7 +101,13 @@ interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export const Button: React.FC<ButtonProps> = ({ btnSize, btnStyle, btnType, className, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({
+  btnSize,
+  btnStyle,
+  btnType,
+  className,
+  ...props
+}) => {
   return (
     <button
       className={classNames(buttonVariants({ btnSize, btnStyle, btnType, className }))}
