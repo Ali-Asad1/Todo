@@ -57,7 +57,7 @@ const TodoList = () => {
         </Grid>
         <Grid>
           <div className="col-span-full desktop:col-span-8 desktop:col-start-3">
-            <div className="w-full min-h-[calc(100vh-240px)] flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6">
+            <div className="w-full flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6">
               {loading ? (
                 <>
                   {Array(3)
@@ -83,7 +83,9 @@ const TodoList = () => {
           </div>
         </Grid>
       </section>
-      <AnimatePresence>{showModal && <AddtodoModal onClose={closeModal} />}</AnimatePresence>
+      <AnimatePresence>
+        {showModal && <AddtodoModal onClose={closeModal} relodMainData={fetchTodos} />}
+      </AnimatePresence>
     </>
   );
 };
