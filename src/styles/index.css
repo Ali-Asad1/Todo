@@ -9,7 +9,7 @@
     @apply h-full;
   }
   body {
-    @apply bg-slate-1 font-roboto text-slate-12;
+    @apply bg-slate-2 font-roboto text-slate-12 transition-colors;
   }
   section {
     @apply py-12;

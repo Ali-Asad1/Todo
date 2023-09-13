@@ -25,7 +25,7 @@ const onInitHandler = (typewriter: TypewriterClass) => {
 
 export default function Footer() {
   return (
-    <footer className="bg-teal-4 sticky bottom-0 z-20">
+    <footer className="bg-teal-4 sticky bottom-0 z-20 transition-colors">
       <div className="h-12 flex justify-center items-center">
         <Typewriter options={typewriterOptions} onInit={onInitHandler} />
       </div>
