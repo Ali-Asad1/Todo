@@ -8,14 +8,18 @@ import Error from "../Error";
 import Grid from "@/components/shared/Grid";
 import { TodoType } from "@/types/todo.type";
 import { Button } from "@/components/button/Button";
-import { BiPlus } from "react-icons/bi";
+import { BiMoon, BiPlus, BiSun } from "react-icons/bi";
 import AddtodoModal from "@/components/modal/todo/AddtodoModal";
+import { useTheme } from "@/contexts/theme";
 
 const TodoList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [data, setData] = useState<TodoType[]>([]);
   const [showModal, setShowModal] = useState(false);
+
+  const { theme, toggleTheme } = useTheme();
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -45,19 +49,29 @@ const TodoList = () => {
       <section>
         <Grid className="mb-5">
           <div className="desktop:col-start-3">
-            <Button
-              btnType="iconOnly"
-              btnStyle="primary"
-              btnSize="lg"
-              onClick={() => setShowModal(true)}
-            >
-              <BiPlus size={24} />
-            </Button>
+            <div className="w-full flex gap-x-5">
+              <Button
+                btnType="iconOnly"
+                btnStyle="primary"
+                btnSize="lg"
+                onClick={() => setShowModal(true)}
+              >
+                <BiPlus size={24} />
+              </Button>
+              <Button
+                btnType="iconOnly"
+                btnStyle="secondary"
+                btnSize="lg"
+                onClick={() => toggleTheme()}
+              >
+                {theme === "light" ? <BiMoon size={24} /> : <BiSun size={24} />}
+              </Button>
+            </div>
           </div>
         </Grid>
         <Grid>
           <div className="col-span-full desktop:col-span-8 desktop:col-start-3">
-            <div className="w-full flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6">
+            <div className="w-full flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6 transition-colors">
               {loading ? (
                 <>
                   {Array(3)
