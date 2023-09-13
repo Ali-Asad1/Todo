@@ -1,7 +1,7 @@
 import { deleteTodo, getAllTodos } from "@/api/services/todosService";
 import { useEffect, useState } from "react";
 import TodoLoading from "../Loading";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import Todo from "../Todo";
 import Empty from "../Empty";
 import Error from "../Error";
@@ -71,29 +71,34 @@ const TodoList = () => {
         </Grid>
         <Grid>
           <div className="col-span-full desktop:col-span-8 desktop:col-start-3">
-            <div className="w-full flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6 transition-colors">
-              {loading ? (
-                <>
-                  {Array(3)
-                    .fill(0)
-                    .map((_, index) => (
-                      <TodoLoading key={index} />
-                    ))}
-                </>
-              ) : !error ? (
-                data.length ? (
-                  <AnimatePresence mode="popLayout">
-                    {data.map((todo: TodoType, index: number) => (
-                      <Todo key={todo.id} {...todo} delay={index} onRemove={removeTodo} />
-                    ))}
-                  </AnimatePresence>
+            <LayoutGroup >
+              <motion.div
+                layout="size"
+                className="w-full flex flex-col gap-y-5 px-5 py-6 bg-slate-3 rounded-lg border border-slate-6 transition-colors"
+              >
+                {loading ? (
+                  <>
+                    {Array(3)
+                      .fill(0)
+                      .map((_, index) => (
+                        <TodoLoading key={index} />
+                      ))}
+                  </>
+                ) : !error ? (
+                  data.length ? (
+                    <AnimatePresence mode="popLayout">
+                      {data.map((todo: TodoType, index: number) => (
+                        <Todo key={todo.id} {...todo} delay={index} onRemove={removeTodo} />
+                      ))}
+                    </AnimatePresence>
+                  ) : (
+                    <Empty />
+                  )
                 ) : (
-                  <Empty />
-                )
-              ) : (
-                <Error />
-              )}
-            </div>
+                  <Error />
+                )}
+              </motion.div>
+            </LayoutGroup>
           </div>
         </Grid>
       </section>
