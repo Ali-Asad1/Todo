@@ -7,12 +7,12 @@ const buttonVariants = cva(
     variants: {
       btnStyle: {
         primary:
-          "bg-teal-9 hover:bg-teal-10 active:bg-teal-11 text-slate-1 hover:text-slate-1/80 active:text-slate-1/60",
+          "bg-pink-9 hover:bg-pink-10 active:bg-pink-11 text-slate-1 hover:text-slate-1/80 active:text-slate-1/60",
         secondary:
-          "bg-slate-3 hover:bg-slate-4 active:bg-slate-5 text-teal-11 hover:text-teal-11/80 active:text-teal-11/60",
-        tertiary: "bg-transparent text-teal-11 hover:bg-teal-9/10 active:bg-teal-9/20",
+          "bg-slate-3 hover:bg-slate-4 active:bg-slate-5 text-pink-11 hover:text-pink-11/80 active:text-pink-11/60",
+        tertiary: "bg-transparent text-pink-11 hover:bg-pink-9/10 active:bg-pink-9/20",
         outline:
-          "bg-transparent ring-1 ring-slate-6 hover:ring-slate-7 active:ring-slate-8 text-teal-11 hover:bg-slate-9/10 active:bg-slate-9/20",
+          "bg-transparent ring-1 ring-slate-6 hover:ring-slate-7 active:ring-slate-8 text-pink-11 hover:bg-slate-9/10 active:bg-slate-9/20",
       },
       btnType: {
         default: "",

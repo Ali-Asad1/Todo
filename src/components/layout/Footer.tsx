@@ -12,7 +12,7 @@ const onInitHandler = (typewriter: TypewriterClass) => {
     .pauseFor(3000)
     .deleteAll()
     .typeString(
-      `Check My  <a href="https://github.com/MrAli001" target="_blank" class="font-bold text-teal-8 underline underline-offset-2">Github Profile</a>`
+      `Check My  <a href="https://github.com/MrAli001" target="_blank" class="font-bold text-pink-8 underline underline-offset-2">Github Profile</a>`
     )
     .pauseFor(2500)
     .deleteChars(15)
@@ -25,7 +25,7 @@ const onInitHandler = (typewriter: TypewriterClass) => {
 
 export default function Footer() {
   return (
-    <footer className="bg-teal-4 sticky bottom-0 z-20 transition-colors">
+    <footer className="bg-pink-4 sticky bottom-0 z-20 transition-colors">
       <div className="h-12 flex justify-center items-center">
         <Typewriter options={typewriterOptions} onInit={onInitHandler} />
       </div>

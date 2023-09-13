@@ -15,7 +15,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       <div className="flex flex-col-reverse mt-10">
         <input
           className={classNames(
-            "peer w-full h-10 mt-2 px-3 bg-slate-4 rounded-md border border-slate-6 text-sm focus:border-teal-8 focus:outline-none transition-colors placeholder:font-roboto placeholder:text-sm",
+            "peer w-full h-10 mt-2 px-3 bg-slate-4 rounded-md border border-slate-6 text-sm focus:border-pink-8 focus:outline-none transition-colors placeholder:font-roboto placeholder:text-sm",
             meta.touched && meta.error && "!border-red-8",
             className
           )}
@@ -27,7 +27,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <label
             htmlFor={props.name}
             className={classNames(
-              "font-poppins text-base pl-1 transition-colors peer-focus:text-teal-9",
+              "font-poppins text-base pl-1 transition-colors peer-focus:text-pink-9",
               meta.touched && meta.error && "!text-red-9"
             )}
           >
